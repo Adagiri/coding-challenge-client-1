@@ -38,7 +38,7 @@ function App() {
   const [showEditIcon, setShowEditIcon] = useState(false);
   const [showEditButton, setShowEditButton] = useState(false);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!selectedSector) {
@@ -111,7 +111,7 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="left" p={6} fontSize={17} maxW={400}>
+      <Box textAlign='left' p={6} fontSize={17} maxW={400}>
         <HStack my={6}>
           <Text fontSize={17} textAlign={'left'}>
             Please enter your name and pick the Sectors you are currently
@@ -132,30 +132,26 @@ function App() {
 
         <form onSubmit={handleSubmit}>
           <Stack spacing={8} align={'flex-start'} maxW={350}>
-            <VStack align="start">
-              <Text color="lightblue" fontSize={14}>
-                Name{' '}
-              </Text>
+            <VStack align='start'>
+              <Text fontSize={14}>Name </Text>
               <Input
-                type="text"
-                size="md"
+                type='text'
+                size='md'
                 value={name}
-                onChange={e => nameVar(e.target.value)}
+                onChange={(e) => nameVar(e.target.value)}
                 isRequired
                 isDisabled={fieldsDisabled}
               />
             </VStack>
 
-            <VStack align="start">
-              <Text color="lightblue" fontSize={14}>
-                Sector{' '}
-              </Text>
+            <VStack align='start'>
+              <Text fontSize={14}>Sector </Text>
               <SelectLogic />
             </VStack>
 
             <Checkbox
               isChecked={acceptTerms}
-              onChange={e => acceptTermsVar(!acceptTerms)}
+              onChange={(e) => acceptTermsVar(!acceptTerms)}
               isRequired
               isDisabled={fieldsDisabled}
             >
@@ -164,10 +160,11 @@ function App() {
 
             {showSaveButton && (
               <Button
-                type="submit"
-                size="md"
+                type='submit'
+                size='md'
                 isLoading={submitting}
                 isDisabled={submitting}
+                colorScheme='blue'
               >
                 Save
               </Button>
@@ -175,10 +172,11 @@ function App() {
 
             {showEditButton && (
               <Button
-                type="submit"
-                size="md"
+                type='submit'
+                size='md'
                 isLoading={submitting}
                 isDisabled={submitting}
+                colorScheme='purple'
               >
                 Edit
               </Button>

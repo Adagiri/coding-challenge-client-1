@@ -9,16 +9,16 @@ import { fieldsDisabledVar, selectedSectorVar } from './state';
 const SelectLogic = () => {
   const [sectors, setSectors] = useState([]);
 
-  const getDefaults = sectors => {
-    return sectors.filter(option => option.hasParent === false);
+  const getDefaults = (sectors) => {
+    return sectors.filter((option) => option.hasParent === false);
   };
 
-  const getChildren = parent => {
-    return sectors.filter(option => option.parent === parent);
+  const getChildren = (parent) => {
+    return sectors.filter((option) => option.parent === parent);
   };
 
-  const getParent = child => {
-    const childData = sectors.find(option => option.name === child);
+  const getParent = (child) => {
+    const childData = sectors.find((option) => option.name === child);
     return childData.parent;
   };
 
@@ -44,7 +44,7 @@ const SelectLogic = () => {
     getSectors();
   }, []);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     selectedSectorVar('');
     const value = event.target.value;
 
@@ -71,17 +71,18 @@ const SelectLogic = () => {
   };
 
   if (options.length === 0) {
-    return <Spinner size="xs" />;
+    return <Spinner size='xs' />;
   }
 
   return (
     <HStack spacing={2}>
       {options[0] && options[0].hasParent && (
         <IconButton
-          aria-label="Go back"
+          aria-label='Go back'
           icon={<ArrowBackIcon />}
           onClick={handleGoBack}
           isDisabled={fieldsDisabled}
+          colorScheme='blue'
         />
       )}
 
@@ -90,13 +91,13 @@ const SelectLogic = () => {
         onChange={handleChange}
         width={{ base: 200, sm: 300 }}
         icon={!selectedSector && <ArrowRightIcon fontSize={10} />}
-        size="md"
+        size='md'
         cursor={'pointer'}
         isRequired
         isDisabled={fieldsDisabled}
       >
         <option style={{ cursor: 'pointer' }}>{defaultOptionText}</option>
-        {options.map(option => {
+        {options.map((option) => {
           return (
             <option
               style={{ cursor: 'pointer' }}
